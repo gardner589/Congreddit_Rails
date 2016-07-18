@@ -26,6 +26,8 @@ ActiveRecord::Schema.define(version: 20160718141321) do
     t.string   "name"
     t.string   "party"
     t.integer  "year_elected"
+    t.string   "bio_id"
+    t.integer  "number"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end

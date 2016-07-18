@@ -4,7 +4,8 @@ class CreateLegislators < ActiveRecord::Migration[5.0]
       t.string :name
       t.string :party
       t.integer :year_elected
-
+      t.string :bio_id
+      t.integer :number
       t.timestamps
     end
   end

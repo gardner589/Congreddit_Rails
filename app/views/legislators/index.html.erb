@@ -15,6 +15,9 @@
   <tbody>
     <% @legislators.each do |legislator| %>
       <tr>
+        <td>
+          <%= legislator.number %>
+        </td>
         <td><%= legislator.name %></td>
         <td><%= legislator.party %></td>
         <td><%= legislator.year_elected %></td>

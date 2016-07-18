@@ -3,6 +3,7 @@
 <p>
   <strong>Name:</strong>
   <%= @legislator.name %>
+
 </p>
 
 <p>
@@ -10,10 +11,7 @@
   <%= @legislator.party %>
 </p>
 
-<p>
-  <strong>Integer:</strong>
-  <%= @legislator.integer %>
-</p>
+
 
 <%= link_to 'Edit', edit_legislator_path(@legislator) %> |
 <%= link_to 'Back', legislators_path %>
