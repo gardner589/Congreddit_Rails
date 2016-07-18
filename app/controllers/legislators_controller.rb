@@ -11,6 +11,7 @@ class LegislatorsController < ApplicationController
   # GET /legislators/1
   # GET /legislators/1.json
   def show
+    
   end
 
   # GET /legislators/new
