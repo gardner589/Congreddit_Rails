@@ -32,15 +32,17 @@ while x < 12 do
   x = x.to_i
 end
 
+x = 0
 while x < 10 do
   x += 1
   x = x.to_s
 
-  votes = JSON.parse(HTTParty.get("https://congress.api.sunlightfoundation.com/votes?vote_type=passage&congress=114&fields=voter_ids,bill_id&apikey=06b0919993e0438a80c39d53cc99c878").body["results"])
+  votes = JSON.parse(HTTParty.get("https://congress.api.sunlightfoundation.com/votes?vote_type=passage&congress=114&fields=voter_ids,bill_id,roll_id,chamber,congress,vote_type,voted_at,year&per_page=50&page="+x+"&apikey=06b0919993e0438a80c39d53cc99c878").body)["results"]
 
   votes.each do |vote|
-    Vote.create!(bill_id: vote["bill_id"], chamber: vote["chamber"], roll_id: vote["roll_id"], pass: vote["result"])
+    Vote.create!(bill_id: vote["bill_id"], chamber: vote["chamber"], roll_id: vote["roll_id"], result: vote["result"], vote_type: vote["vote_type"], congress: vote["congress"], voted_at: vote["voted_at"], year: vote["year"])
   end
+  x = x.to_i
 end
 
 
