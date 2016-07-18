@@ -31,6 +31,19 @@ while x < 12 do
   end
   x = x.to_i
 end
+
+while x < 10 do
+  x += 1
+  x = x.to_s
+
+  votes = JSON.parse(HTTParty.get("https://congress.api.sunlightfoundation.com/votes?vote_type=passage&congress=114&fields=voter_ids,bill_id&apikey=06b0919993e0438a80c39d53cc99c878").body["results"])
+
+  votes.each do |vote|
+    Vote.create!(bill_id: vote["bill_id"], chamber: vote["chamber"], roll_id: vote["roll_id"], pass: vote["result"])
+  end
+end
+
+
 # Legislator.destroy_all
 #
 # legislators = Legislator.create([
