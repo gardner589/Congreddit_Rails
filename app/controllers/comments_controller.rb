@@ -69,6 +69,8 @@ class CommentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
-      params.fetch(:comment, {})
+      # below commented out stuff from scaffold
+      # params.fetch(:comment, :author, :content, {})
+      params.require(:comment).permit(:author, :content)
     end
 end
