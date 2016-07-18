@@ -5,11 +5,13 @@ class LegislatorsController < ApplicationController
   # GET /legislators.json
   def index
     @legislators = Legislator.all
+    render json: @legislators
   end
 
   # GET /legislators/1
   # GET /legislators/1.json
   def show
+    render json: @legislator
   end
 
   # GET /legislators/new
