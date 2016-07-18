@@ -6,8 +6,19 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-require('httparty')
+# require('httparty')
+#
+# def legislators
+#   JSON.parse(
+#   HTTParty.get(
+#   "https://congress.api.sunlightfoundation.com/legislators?apikey=06b0919993e0438a80c39d53cc99c878"
+#   ).body)["results"]["bioguide_id"]
+# end
 
-def legislators
-  JSON.parse(HTTParty.get("https://congress.api.sunlightfoundation.com/legislators?apikey=06b0919993e0438a80c39d53cc99c878").body)["results"]["bioguide_id"]
-end
+Legislator.destroy_all
+
+legislators = Legislator.create([
+  {name: "Dave", party: "Pirate", year_elected: 2015},
+  {name: "Chris", party: "Marvel", year_elected: 2000},
+  {name: "Big Mike", party: "Bowling", year_elected: 1632}
+  ])
