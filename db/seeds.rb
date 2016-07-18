@@ -9,8 +9,5 @@
 require('httparty')
 
 def legislators
-  JSON.parse(
-  HTTParty.get(
-  "https://congress.api.sunlightfoundation.com/legislators?apikey=06b0919993e0438a80c39d53cc99c878"
-  ).body)["results"]["bioguide_id"]
+  JSON.parse(HTTParty.get("https://congress.api.sunlightfoundation.com/legislators?apikey=06b0919993e0438a80c39d53cc99c878").body)["results"]["bioguide_id"]
 end
