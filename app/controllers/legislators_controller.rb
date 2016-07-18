@@ -1,11 +1,16 @@
 class LegislatorsController < ApplicationController
   before_action :set_legislator, only: [:show, :edit, :update, :destroy]
 
+  # attr_reader :first_name
+
   # GET /legislators
   # GET /legislators.json
   def index
-    @legislators = Legislator.all
-    render json: @legislators
+    url = "https://congress.api.sunlightfoundation.com/legislators?party/apikey=06b0919993e0438a80c39d53cc99c878"
+    response = HTTParty.get(url)
+    @legislators = response
+    # @legislators = Legislator.all
+    # render json: @legislators
   end
 
   # GET /legislators/1
