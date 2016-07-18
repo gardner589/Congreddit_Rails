@@ -26,8 +26,8 @@ while x < 12 do
 
   legislators = JSON.parse(HTTParty.get("https://congress.api.sunlightfoundation.com/legislators?per_page=50&page="+x+"&apikey=06b0919993e0438a80c39d53cc99c878").body)["results"]
 
-  legislators.each_with_index do |legislator, index|
-    Legislator.create!(name: legislator["first_name"], party: legislator["party"], year_elected: legislator["term_start"], bio_id: legislator["bioguide_id"], number: index)
+  legislators.each do |legislator|
+    Legislator.create!(name: legislator["first_name"], party: legislator["party"], year_elected: legislator["term_start"], bio_id: legislator["bioguide_id"], number: x)
   end
   x = x.to_i
 end
