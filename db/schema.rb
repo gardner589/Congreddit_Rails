@@ -23,10 +23,12 @@ ActiveRecord::Schema.define(version: 20160718212834) do
   end
 
   create_table "legislators", force: :cascade do |t|
-    t.string   "name"
+    t.string   "first_name"
+    t.string   "last_name"
     t.string   "party"
     t.integer  "year_elected"
     t.string   "bio_id"
+    t.string   "chamber"
     t.integer  "number"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
@@ -41,6 +43,7 @@ ActiveRecord::Schema.define(version: 20160718212834) do
     t.string   "roll_id"
     t.integer  "year"
     t.string   "result"
+    t.json     "voter_ids"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
