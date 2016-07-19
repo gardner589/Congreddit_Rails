@@ -17,6 +17,7 @@ require 'pry'
 
 require('httparty')
 Legislator.destroy_all
+Vote.destroy_all
 
 x = 0
 

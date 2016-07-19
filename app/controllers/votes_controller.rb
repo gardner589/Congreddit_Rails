@@ -5,6 +5,7 @@ class VotesController < ApplicationController
   # GET /votes.json
   def index
     @votes = Vote.all
+    render json: @votes.to_json, status: :ok
   end
 
   # GET /votes/1
