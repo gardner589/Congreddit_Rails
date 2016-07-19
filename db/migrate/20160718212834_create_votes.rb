@@ -9,6 +9,7 @@ class CreateVotes < ActiveRecord::Migration[5.0]
       t.string :roll_id
       t.integer :year
       t.string :result
+      t.json :voter_ids
 
       t.timestamps
     end

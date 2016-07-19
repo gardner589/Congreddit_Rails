@@ -13,6 +13,7 @@
       <th>Roll</th>
       <th>Year</th>
       <th>Result</th>
+      <th>Voters</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -28,6 +29,7 @@
         <td><%= vote.roll_id %></td>
         <td><%= vote.year %></td>
         <td><%= vote.result %></td>
+        <td><%= vote.voter_ids %></td>
         <td><%= link_to 'Show', vote %></td>
         <td><%= link_to 'Edit', edit_vote_path(vote) %></td>
         <td><%= link_to 'Destroy', vote, method: :delete, data: { confirm: 'Are you sure?' } %></td>
