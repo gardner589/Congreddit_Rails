@@ -5,11 +5,13 @@ class VotesController < ApplicationController
   # GET /votes.json
   def index
     @votes = Vote.all
+    render json: @votes.to_json, status: :ok
   end
 
   # GET /votes/1
   # GET /votes/1.json
   def show
+    render json: @vote.to_json, status: :ok
   end
 
   # GET /votes/new

@@ -11,7 +11,7 @@ class LegislatorsController < ApplicationController
   # GET /legislators/1
   # GET /legislators/1.json
   def show
-    
+    render json: @legislator.to_json, status: :ok
   end
 
   # GET /legislators/new
