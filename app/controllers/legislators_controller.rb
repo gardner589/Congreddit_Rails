@@ -13,23 +13,24 @@ class LegislatorsController < ApplicationController
   # GET /legislators/1
   # GET /legislators/1.json
   def show
-    @legislator = Legislator.find(params[:id])
-    @votes_id = Vote.all.pluck(:voter_ids)
-    @votes = @votes_id.each do |vote|
-      @legVotes = JSON.parse(vote)
-    end
-    @legVotes = @votes.map do |vote|
-      JSON.parse(vote)
-    end
-    @blotes = Vote.all
-    @bloteArray = []
-    @blotes.each do |blot|
-      @bloteArray.push(blot.bill_id)
-    end
+
+    # @votes_id = Vote.all.pluck(:voter_ids)
+    # @votes = @votes_id.each do |vote|
+    #   @legVotes = JSON.parse(vote)
+    # end
+    # @legVotes = @votes.map do |vote|
+    #   JSON.parse(vote)
+    # end
+    # @blotes = Vote.all
+    # @bloteArray = []
+    # @blotes.each do |blot|
+    #   @bloteArray.push(blot.bill_id)
+    # end
+    @legcomments = LegislatorComment.where(legislator_id: @legislator.id)
     # render json: @legislator.to_json, status: :ok
     # render json: @legislator, status: :ok
     # ,
-   render :json => { :legislator => @legislator, :votes => @legVotes, :bill => @bloteArray }
+   render :json => { :legislator => @legislator, :votes => @legVotes, :bill => @bloteArray, :legcomments => @legcomments }
   end
 
   #   render json: @voteArray.to_json, status: :ok
