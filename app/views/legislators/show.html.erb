@@ -13,9 +13,27 @@
   <%= @legislator.party %>
 </p>
 
+<table>
+  <thead>
+    <tr>
+      <th>Votes</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @votes.each do |vote| %>
+    <tr>
+      <td><%= JSON.parse(vote.voter_ids)[@legislator.bio_id] %></td>
+    </tr><% end %>
+    <tr>
+
+    </tr>
+  </tbody>
+</table>
+
 
 
 
 
 <%= link_to 'Edit', edit_legislator_path(@legislator) %> |
 <%= link_to 'Back', legislators_path %>
+<% console %>

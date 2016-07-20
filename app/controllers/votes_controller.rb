@@ -11,7 +11,9 @@ class VotesController < ApplicationController
   # GET /votes/1
   # GET /votes/1.json
   def show
-    render json: @vote.to_json, status: :ok
+    @legislator = Legislator.find(params[:legislator_id])
+    @vote = Vote.find(params[:id])  
+    # render json: @vote.to_json, status: :ok
   end
 
   # GET /votes/new
