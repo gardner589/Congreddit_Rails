@@ -35,7 +35,7 @@ class LegislatorsController < ApplicationController
 
   # GET /legislators/new
   def new
-    @legislator = Legislator.new
+
   end
 
   # GET /legislators/1/edit

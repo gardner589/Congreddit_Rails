@@ -26,6 +26,9 @@ class LegislatorCommentsController < ApplicationController
   def create
     @legislator_comment = LegislatorComment.new(legislator_comment_params)
 
+    @legislator = Legislator.find(params[:legislator_id])
+    
+
     respond_to do |format|
       if @legislator_comment.save
         format.html { redirect_to @legislator_comment, notice: 'Legislator comment was successfully created.' }
