@@ -1,4 +1,5 @@
 require 'pry'
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
@@ -17,7 +18,11 @@ require 'pry'
 
 require 'httparty'
 require 'json'
+
 Legislator.destroy_all
+LegislatorComment.destroy_all
+Bill.destroy_all
+BillComment.destroy_all
 Vote.destroy_all
 
 x = 0
@@ -48,25 +53,31 @@ while x < 10 do
   x = x.to_i
 end
 
-# x = 0
-# while x < 39 do
-#   x += 1
-#   x = x.to_s
-#
-#   bills = JSON.parse(HTTParty.get("https://congress.api.sunlightfoundation.com/bills?congress=114&bill_type__in=s|hr&history.active=true&page="+x+"&per_page=50&apikey=06b0919993e0438a80c39d53cc99c878").body)["results"]
-#
-#   x = x.to_i
-#
-#   bills.each do |bill|
-#     Bill.create!()
-#   end
-# end
+x = 0
+while x < 39 do
+  x += 1
+  x = x.to_s
 
+  bills = JSON.parse(HTTParty.get("https://congress.api.sunlightfoundation.com/bills?congress=114&bill_type__in=s|hr&history.active=true&page="+x+"&per_page=50&apikey=06b0919993e0438a80c39d53cc99c878").body)["results"]
 
-# Legislator.destroy_all
-#
-# legislators = Legislator.create([
-#   {name: "Dave", party: "Pirate", year_elected: 2015},
-#   {name: "Chris", party: "Marvel", year_elected: 2000},
-#   {name: "Big Mike", party: "Bowling", year_elected: 1632}
-#   ])
+  x = x.to_i
+
+  bills.each do |bill|
+    Bill.create!(bill_id_from_api: bill["bill_id"], bill_type: bill["bill_type"], chamber: bill["chamber"], congress: bill["congress"], history: bill["history"].to_json, introduced: bill["introduced_on"], last_action: bill["last_action_at"],last_vote: bill["last_vote_at"],
+    last_version: bill["last_version"].to_json, official_title: bill["official_title"], popular_title: bill["popular_title"], short_title: bill["short_title"], sponsor: bill["sponsor"].to_json, sponsor_bio_id: bill["sponsor_id"])
+  end
+end
+
+bill_comments = BillComment.create!([
+  {author: "Dave", content: "Whatever about this bill", bill_id: 1},
+  {author: "Nelson", content: "I'm a comment content", bill_id: 1},
+  {author: "Chris", content: "Great bill! Love the bill! Ducks are so great.", bill_id: 2},
+  {author: "Strawberry", content: "I fully endorse any bill involving strawberries", bill_id: 2}
+  ])
+
+legis_comments = LegislatorComment.create!([
+  {author: "Jerry", content: "Legislator rhymes with Alligator", legislator_id: 1},
+  {author: "Kramer", content: "Yeah Yeah Yeah Yeah Yeah Yeah Legislator", legislator_id: 1},
+  {author: "Elaine", content: "I'll legislate you", legislator_id: 1},
+  {author: "George", content: "Checkout this legislator Jerry!", legislator_id: 2}
+  ])

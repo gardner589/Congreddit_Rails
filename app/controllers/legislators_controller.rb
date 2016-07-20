@@ -1,5 +1,8 @@
 class LegislatorsController < ApplicationController
   before_action :set_legislator, only: [:show, :edit, :update, :destroy]
+
+  # attr_reader :first_name
+
   # GET /legislators
   # GET /legislators.json
   def index
@@ -22,6 +25,9 @@ class LegislatorsController < ApplicationController
     # render json: @legislator, status: :ok
    render :json => {:votes => @legVotes, :legislator => @legislator }
   end
+
+  #   render json: @voteArray.to_json, status: :ok
+  # end
 
   # GET /legislators/new
   def new

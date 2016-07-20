@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Legislator Comments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Author</th>
+      <th>Content</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @legislator_comments.each do |legislator_comment| %>
+      <tr>
+        <td><%= legislator_comment.author %></td>
+        <td><%= legislator_comment.content %></td>
+        <td><%= link_to 'Show', legislator_comment %></td>
+        <td><%= link_to 'Edit', edit_legislator_comment_path(legislator_comment) %></td>
+        <td><%= link_to 'Destroy', legislator_comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Legislator Comment', new_legislator_comment_path %>

@@ -1,0 +1,78 @@
+<p id="notice"><%= notice %></p>
+
+<% @billcomments.each do |comment| %><p>
+    <%= comment.content %>
+</p><% end %>
+
+<p>
+  <strong>Bill:</strong>
+  <%= @bill.bill_id_from_api %>
+</p>
+
+<p>
+  <strong>Bill type:</strong>
+  <%= @bill.bill_type %>
+</p>
+
+<p>
+  <strong>Chamber:</strong>
+  <%= @bill.chamber %>
+</p>
+
+<p>
+  <strong>Congress:</strong>
+  <%= @bill.congress %>
+</p>
+
+<p>
+  <strong>History:</strong>
+  <%= @bill.history %>
+</p>
+
+<p>
+  <strong>Introduced:</strong>
+  <%= @bill.introduced %>
+</p>
+
+<p>
+  <strong>Last action:</strong>
+  <%= @bill.last_action %>
+</p>
+
+<p>
+  <strong>Last vote:</strong>
+  <%= @bill.last_vote %>
+</p>
+
+<p>
+  <strong>Last version:</strong>
+  <%= @bill.last_version %>
+</p>
+
+<p>
+  <strong>Official title:</strong>
+  <%= @bill.official_title %>
+</p>
+
+<p>
+  <strong>Popular title:</strong>
+  <%= @bill.popular_title %>
+</p>
+
+<p>
+  <strong>Short title:</strong>
+  <%= @bill.short_title %>
+</p>
+
+<p>
+  <strong>Sponsor:</strong>
+  <%= @bill.sponsor %>
+</p>
+
+<p>
+  <strong>Sponsor bio:</strong>
+  <%= @bill.sponsor_bio_id %>
+</p>
+
+<%= link_to 'Edit', edit_bill_path(@bill) %> |
+<%= link_to 'Back', bills_path %>

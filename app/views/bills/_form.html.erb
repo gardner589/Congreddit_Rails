@@ -1,0 +1,92 @@
+<%= form_for(bill) do |f| %>
+  <% if bill.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(bill.errors.count, "error") %> prohibited this bill from being saved:</h2>
+
+      <ul>
+      <% bill.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :bill_id %>
+    <%= f.text_field :bill_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :bill_type %>
+    <%= f.text_field :bill_type %>
+  </div>
+
+  <div class="field">
+    <%= f.label :chamber %>
+    <%= f.text_field :chamber %>
+  </div>
+
+  <div class="field">
+    <%= f.label :committees %>
+    <%= f.text_field :committees %>
+  </div>
+
+  <div class="field">
+    <%= f.label :congress %>
+    <%= f.number_field :congress %>
+  </div>
+
+  <div class="field">
+    <%= f.label :history %>
+    <%= f.text_field :history %>
+  </div>
+
+  <div class="field">
+    <%= f.label :introduced %>
+    <%= f.date_select :introduced %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_action %>
+    <%= f.date_select :last_action %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_vote %>
+    <%= f.date_select :last_vote %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_version %>
+    <%= f.text_field :last_version %>
+  </div>
+
+  <div class="field">
+    <%= f.label :official_title %>
+    <%= f.text_field :official_title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :popular_title %>
+    <%= f.text_field :popular_title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :short_title %>
+    <%= f.text_field :short_title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :sponsor %>
+    <%= f.text_field :sponsor %>
+  </div>
+
+  <div class="field">
+    <%= f.label :sponsor_bio_id %>
+    <%= f.text_field :sponsor_bio_id %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

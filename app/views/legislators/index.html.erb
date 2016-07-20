@@ -1,34 +1,22 @@
-<p id="notice"><%= notice %></p>
+<div>
 
-<h1>Legislators</h1>
+  <header class="jumbotron">
+    <h1>Legislators</h1>
+  </header>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Party</th>
-      <th>Year Elected</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @legislators.each do |legislator| %>
-      <tr>
-        <td>
-          <%= legislator.number %>
-        </td>
-        <td><%= legislator.first_name %></td>
-        <td><%= legislator.party %></td>
-        <td><%= legislator.year_elected %></td>
-        <td><%= link_to 'Show', legislator %></td>
-        <td><%= link_to 'Edit', edit_legislator_path(legislator) %></td>
-        <td><%= link_to 'Destroy', legislator, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  <table>
+    <thead>
+      <th>
+        Legislator Name
+      </th>
+    </thead>
+    <tbody>
+      <tr data-ng-repeat="legis in legislatorsIndexVM">
+        <td>{{legis.first_name}} {{legis.last_name}}</td>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
 
-<br>
 
-<%= link_to 'New Legislator', new_legislator_path %>
+
+</div>
