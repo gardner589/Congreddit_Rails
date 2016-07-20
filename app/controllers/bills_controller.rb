@@ -5,6 +5,7 @@ class BillsController < ApplicationController
   # GET /bills.json
   def index
     @bills = Bill.all
+    render json: @bills.to_json, status: :ok
   end
 
   # GET /bills/1

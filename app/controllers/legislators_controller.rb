@@ -33,9 +33,6 @@ class LegislatorsController < ApplicationController
    render :json => { :legislator => @legislator, :votes => @legVotes, :bill => @bloteArray, :legcomments => @legcomments }
   end
 
-  #   render json: @voteArray.to_json, status: :ok
-  # end
-
   # GET /legislators/new
   def new
     @legislator = Legislator.new

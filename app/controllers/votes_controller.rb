@@ -5,10 +5,10 @@ class VotesController < ApplicationController
   # GET /votes.json
   def index
     @legislator = Legislator.find(params[:legislator_id])
-    @votes_id = Vote.all.pluck(:voter_ids)
-    @votes = @votes_id.each do |vote|
-     @legVotes = JSON.parse(vote)
-    end
+    @votes_id = Vote.all.pluck(:voter_ids, :bill_id)
+    # @votes = @votes_id.each do |vote|
+    #  @legVotes = JSON.parse(vote)
+    # end
     render json: @votes.to_json, status: :ok
   end
 
