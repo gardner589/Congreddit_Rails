@@ -16,6 +16,9 @@
 <table>
   <thead>
     <tr>
+      If a bill has no vote next to it the Legislator did not vote on the bill.
+    </tr>
+    <tr>
       <th>Votes</th>
       <th>Bills</th>
     </tr>
@@ -28,10 +31,6 @@
     </tr><% end %>
   </tbody>
 </table>
-
-
-
-
 
 <%= link_to 'Edit', edit_legislator_path(@legislator) %> |
 <%= link_to 'Back', legislators_path %>
