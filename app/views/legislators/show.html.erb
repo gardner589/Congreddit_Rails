@@ -2,7 +2,10 @@
 
 <p>
   <strong>Name:</strong>
-  <%= @legislator.name %>
+
+  <%= @legislator.first_name %>
+  <%= @legislator.last_name %>
+
 </p>
 
 <p>
@@ -10,10 +13,25 @@
   <%= @legislator.party %>
 </p>
 
-<p>
-  <strong>Integer:</strong>
-  <%= @legislator.integer %>
-</p>
+<table>
+  <thead>
+    <tr>
+      If a bill has no vote next to it the Legislator did not vote on the bill.
+    </tr>
+    <tr>
+      <th>Votes</th>
+      <th>Bills</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @votes.each do |vote| %>
+    <tr>
+      <td><%= JSON.parse(vote.voter_ids)[@legislator.bio_id] %></td>
+      <td><%= vote.bill_id %></td>
+    </tr><% end %>
+  </tbody>
+</table>
 
 <%= link_to 'Edit', edit_legislator_path(@legislator) %> |
 <%= link_to 'Back', legislators_path %>
+<% console %>

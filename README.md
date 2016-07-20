@@ -1,3 +1,7 @@
+#Pre-README
+#### For our project, it looks like we will use the `/legislators?` endpoint, the `/votes?` endpoint and the `/bills?` endpoint .<a href="https://sunlightlabs.github.io/congress/">The documentation</a>
+ 
+
 # README
 
 This README would normally document whatever steps are necessary to get the

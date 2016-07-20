@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Vote type:</strong>
+  <%= @vote.vote_type %>
+</p>
+
+<p>
+  <strong>Chamber:</strong>
+  <%= @vote.chamber %>
+</p>
+
+<p>
+  <strong>Congress:</strong>
+  <%= @vote.congress %>
+</p>
+
+<p>
+  <strong>Voted at:</strong>
+  <%= @vote.voted_at %>
+</p>
+
+<p>
+  <strong>Bill:</strong>
+  <%= @vote.bill_id %>
+</p>
+
+<p>
+  <strong>Roll:</strong>
+  <%= @vote.roll_id %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @vote.year %>
+</p>
+
+<p>
+  <strong>Result:</strong>
+  <%= @vote.result %>
+</p>
+
+<%= link_to 'Edit', edit_vote_path(@vote) %> |
+<%= link_to 'Back', votes_path %>

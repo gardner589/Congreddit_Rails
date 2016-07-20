@@ -6,17 +6,15 @@ class LegislatorsController < ApplicationController
   # GET /legislators
   # GET /legislators.json
   def index
-    url = "https://congress.api.sunlightfoundation.com/legislators?party/apikey=06b0919993e0438a80c39d53cc99c878"
-    response = HTTParty.get(url)
-    @legislators = response
-    # @legislators = Legislator.all
-    # render json: @legislators
+    @legislators = Legislator.all
+    # render json: @legislators.to_json, status: :ok
   end
 
   # GET /legislators/1
   # GET /legislators/1.json
   def show
-    render json: @legislator
+    @votes = Vote.all
+    # render json: @legislator.to_json, status: :ok
   end
 
   # GET /legislators/new

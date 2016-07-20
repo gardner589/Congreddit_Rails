@@ -1,0 +1,57 @@
+<%= form_for(vote) do |f| %>
+  <% if vote.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(vote.errors.count, "error") %> prohibited this vote from being saved:</h2>
+
+      <ul>
+      <% vote.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :vote_type %>
+    <%= f.text_field :vote_type %>
+  </div>
+
+  <div class="field">
+    <%= f.label :chamber %>
+    <%= f.text_field :chamber %>
+  </div>
+
+  <div class="field">
+    <%= f.label :congress %>
+    <%= f.text_field :congress %>
+  </div>
+
+  <div class="field">
+    <%= f.label :voted_at %>
+    <%= f.date_select :voted_at %>
+  </div>
+
+  <div class="field">
+    <%= f.label :bill_id %>
+    <%= f.text_field :bill_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :roll_id %>
+    <%= f.text_field :roll_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :year %>
+    <%= f.number_field :year %>
+  </div>
+
+  <div class="field">
+    <%= f.label :result %>
+    <%= f.text_field :result %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
