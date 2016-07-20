@@ -10,10 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160718212834) do
+ActiveRecord::Schema.define(version: 20160720131356) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bills", force: :cascade do |t|
+    t.string   "bill_id"
+    t.string   "bill_type"
+    t.string   "chamber"
+    t.integer  "congress"
+    t.json     "history"
+    t.date     "introduced"
+    t.date     "last_action"
+    t.date     "last_vote"
+    t.json     "last_version"
+    t.string   "official_title"
+    t.string   "popular_title"
+    t.string   "short_title"
+    t.json     "sponsor"
+    t.string   "sponsor_bio_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
 
   create_table "comments", force: :cascade do |t|
     t.string   "author"

@@ -57,7 +57,8 @@ while x < 39 do
   x = x.to_i
 
   bills.each do |bill|
-    Bill.create!(bill_id: bill["bill_id"], bill_type: bill["bill_type"], chamber: bill["chamber"], committees: bill["committee_ids"].to_a, congress: bill["congress"], history: bill["history"].to_json, introduced: bill["introduced_on"], last_action: bill["last_action_at"], last_version: bill[])
+    Bill.create!(bill_id: bill["bill_id"], bill_type: bill["bill_type"], chamber: bill["chamber"], congress: bill["congress"], history: bill["history"].to_json, introduced: bill["introduced_on"], last_action: bill["last_action_at"],last_vote: bill["last_vote_at"],
+    last_version: bill["last_version"].to_json, official_title: bill["official_title"], popular_title: bill["popular_title"], short_title: bill["short_title"], sponsor: bill["sponsor"].to_json, sponsor_bio_id: bill["sponsor_id"])
   end
 end
 

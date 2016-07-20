@@ -1,0 +1,53 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Bills</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Bill</th>
+      <th>Bill type</th>
+      <th>Chamber</th>
+      <th>Congress</th>
+      <th>History</th>
+      <th>Introduced</th>
+      <th>Last action</th>
+      <th>Last vote</th>
+      <th>Last version</th>
+      <th>Official title</th>
+      <th>Popular title</th>
+      <th>Short title</th>
+      <th>Sponsor</th>
+      <th>Sponsor bio</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bills.each do |bill| %>
+      <tr>
+        <td><%= bill.bill_id %></td>
+        <td><%= bill.bill_type %></td>
+        <td><%= bill.chamber %></td>
+        <td><%= bill.congress %></td>
+        <td><%= bill.history %></td>
+        <td><%= bill.introduced %></td>
+        <td><%= bill.last_action %></td>
+        <td><%= bill.last_vote %></td>
+        <td><%= bill.last_version %></td>
+        <td><%= bill.official_title %></td>
+        <td><%= bill.short_title %></td>
+        <td><%= JSON.parse(bill.sponsor)["first_name"]+" "+JSON.parse(bill.sponsor)["last_name"] %></td>
+
+        <td><%= link_to 'Show', bill %></td>
+        <td><%= link_to 'Edit', edit_bill_path(bill) %></td>
+        <td><%= link_to 'Destroy', bill, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Bill', new_bill_path %>
+<% console %>
