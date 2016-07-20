@@ -24,11 +24,9 @@ class LegislatorCommentsController < ApplicationController
   # POST /legislator_comments
   # POST /legislator_comments.json
   def create
-    @legislator_comment = LegislatorComment.new(legislator_comment_params)
-
     @legislator = Legislator.find(params[:legislator_id])
-    
-
+    @legislator.legislator_comment = LegislatorComment.new(legislator_comment_params)
+    binding.pry
     respond_to do |format|
       if @legislator_comment.save
         format.html { redirect_to @legislator_comment, notice: 'Legislator comment was successfully created.' }
@@ -72,6 +70,7 @@ class LegislatorCommentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def legislator_comment_params
-      params.require(:legislator_comment).permit(:author, :content)
+      params.require(:legislator_comment).permit(:author, :content, :legislator_id)
+      binding.pry
     end
 end
