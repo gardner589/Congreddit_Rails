@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @bill_comment.author %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @bill_comment.content %>
+</p>
+
+<%= link_to 'Edit', edit_bill_comment_path(@bill_comment) %> |
+<%= link_to 'Back', bill_comments_path %>

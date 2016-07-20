@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @legislator_comment.author %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @legislator_comment.content %>
+</p>
+
+<%= link_to 'Edit', edit_legislator_comment_path(@legislator_comment) %> |
+<%= link_to 'Back', legislator_comments_path %>

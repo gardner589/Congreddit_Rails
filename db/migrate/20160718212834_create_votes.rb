@@ -10,6 +10,8 @@ class CreateVotes < ActiveRecord::Migration[5.0]
       t.integer :year
       t.string :result
       t.json :voter_ids
+      t.references :bills
+      t.references :legislators
 
       t.timestamps
     end

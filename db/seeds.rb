@@ -1,4 +1,5 @@
 require 'pry'
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
@@ -17,7 +18,12 @@ require 'pry'
 
 require 'httparty'
 require 'json'
+
 Legislator.destroy_all
+LegislatorComment.destroy_all
+Bill.destroy_all
+BillComment.destroy_all
+Vote.destroy_all
 
 x = 0
 
@@ -62,11 +68,15 @@ while x < 39 do
   end
 end
 
+bill_comments = BillComment.create!([
+  {author: "Dave", content: "Whatever about this bill"},
+  {author: "Chris", content: "Great bill! Love the bill! Ducks are so great."},
+  {author: "Strawberry", content: "I fully endorse any bill involving strawberries"}
+  ])
 
-# Legislator.destroy_all
-#
-# legislators = Legislator.create([
-#   {name: "Dave", party: "Pirate", year_elected: 2015},
-#   {name: "Chris", party: "Marvel", year_elected: 2000},
-#   {name: "Big Mike", party: "Bowling", year_elected: 1632}
-#   ])
+legis_comments = LegislatorComment.create!([
+  {author: "Jerry", content: "Legislator rhymes with Alligator"},
+  {author: "Kramer", content: "Yeah Yeah Yeah Yeah Yeah Yeah Legislator"},
+  {author: "Elaine", content: "I'll legislate you"},
+  {author: "George", content: "Checkout this legislator Jerry!"}
+  ])

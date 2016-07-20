@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160720131356) do
+ActiveRecord::Schema.define(version: 20160720140606) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bill_comments", force: :cascade do |t|
+    t.string   "author"
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "bills", force: :cascade do |t|
     t.string   "bill_id"
@@ -34,7 +41,7 @@ ActiveRecord::Schema.define(version: 20160720131356) do
     t.datetime "updated_at",     null: false
   end
 
-  create_table "comments", force: :cascade do |t|
+  create_table "legislator_comments", force: :cascade do |t|
     t.string   "author"
     t.text     "content"
     t.datetime "created_at", null: false
@@ -63,8 +70,12 @@ ActiveRecord::Schema.define(version: 20160720131356) do
     t.integer  "year"
     t.string   "result"
     t.json     "voter_ids"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "bills_id"
+    t.integer  "legislators_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["bills_id"], name: "index_votes_on_bills_id", using: :btree
+    t.index ["legislators_id"], name: "index_votes_on_legislators_id", using: :btree
   end
 
 end
