@@ -21,9 +21,15 @@ class LegislatorsController < ApplicationController
     @legVotes = @votes.map do |vote|
       JSON.parse(vote)
     end
+    @blotes = Vote.all
+    @bloteArray = []
+    @blotes.each do |blot|
+      @bloteArray.push(blot.bill_id)
+    end
     # render json: @legislator.to_json, status: :ok
     # render json: @legislator, status: :ok
-   render :json => {:votes => @legVotes, :legislator => @legislator }
+    # ,
+   render :json => { :legislator => @legislator, :votes => @legVotes, :bill => @bloteArray }
   end
 
   #   render json: @voteArray.to_json, status: :ok
