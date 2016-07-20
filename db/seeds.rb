@@ -63,20 +63,20 @@ while x < 39 do
   x = x.to_i
 
   bills.each do |bill|
-    Bill.create!(bill_id: bill["bill_id"], bill_type: bill["bill_type"], chamber: bill["chamber"], congress: bill["congress"], history: bill["history"].to_json, introduced: bill["introduced_on"], last_action: bill["last_action_at"],last_vote: bill["last_vote_at"],
+    Bill.create!(bill_id_from_api: bill["bill_id"], bill_type: bill["bill_type"], chamber: bill["chamber"], congress: bill["congress"], history: bill["history"].to_json, introduced: bill["introduced_on"], last_action: bill["last_action_at"],last_vote: bill["last_vote_at"],
     last_version: bill["last_version"].to_json, official_title: bill["official_title"], popular_title: bill["popular_title"], short_title: bill["short_title"], sponsor: bill["sponsor"].to_json, sponsor_bio_id: bill["sponsor_id"])
   end
 end
 
 bill_comments = BillComment.create!([
-  {author: "Dave", content: "Whatever about this bill"},
-  {author: "Chris", content: "Great bill! Love the bill! Ducks are so great."},
-  {author: "Strawberry", content: "I fully endorse any bill involving strawberries"}
+  {author: "Dave", content: "Whatever about this bill", bill_id: 1},
+  {author: "Chris", content: "Great bill! Love the bill! Ducks are so great.", bill_id: 2},
+  {author: "Strawberry", content: "I fully endorse any bill involving strawberries", bill_id: 2}
   ])
 
 legis_comments = LegislatorComment.create!([
-  {author: "Jerry", content: "Legislator rhymes with Alligator"},
-  {author: "Kramer", content: "Yeah Yeah Yeah Yeah Yeah Yeah Legislator"},
-  {author: "Elaine", content: "I'll legislate you"},
-  {author: "George", content: "Checkout this legislator Jerry!"}
+  {author: "Jerry", content: "Legislator rhymes with Alligator", legislator_id: 1},
+  {author: "Kramer", content: "Yeah Yeah Yeah Yeah Yeah Yeah Legislator", legislator_id: 1},
+  {author: "Elaine", content: "I'll legislate you", legislator_id: 1},
+  {author: "George", content: "Checkout this legislator Jerry!", legislator_id: 2}
   ])

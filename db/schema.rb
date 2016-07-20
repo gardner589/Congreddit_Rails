@@ -18,12 +18,14 @@ ActiveRecord::Schema.define(version: 20160720140606) do
   create_table "bill_comments", force: :cascade do |t|
     t.string   "author"
     t.text     "content"
+    t.integer  "bill_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["bill_id"], name: "index_bill_comments_on_bill_id", using: :btree
   end
 
   create_table "bills", force: :cascade do |t|
-    t.string   "bill_id"
+    t.string   "bill_id_from_api"
     t.string   "bill_type"
     t.string   "chamber"
     t.integer  "congress"
@@ -37,15 +39,17 @@ ActiveRecord::Schema.define(version: 20160720140606) do
     t.string   "short_title"
     t.json     "sponsor"
     t.string   "sponsor_bio_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   create_table "legislator_comments", force: :cascade do |t|
     t.string   "author"
     t.text     "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "legislator_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["legislator_id"], name: "index_legislator_comments_on_legislator_id", using: :btree
   end
 
   create_table "legislators", force: :cascade do |t|
