@@ -5,14 +5,19 @@ class LegislatorsController < ApplicationController
   # GET /legislators.json
   def index
     @legislators = Legislator.all
-    # render json: @legislators.to_json, status: :ok
+    render json: @legislators.to_json, status: :ok
   end
 
   # GET /legislators/1
   # GET /legislators/1.json
   def show
+    @legislator = Legislator.find(params[:id])
     @votes = Vote.all
-    # render json: @legislator.to_json, status: :ok
+    @votes.map do |vote|
+      JSON.parse(vote.voter_ids)[@legislator.bio_id]
+    end
+    render json: @legislator.to_json, status: :ok
+    # render json: @votes.to_json, status: :ok
   end
 
   # GET /legislators/new
@@ -72,6 +77,6 @@ class LegislatorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def legislator_params
-      params.require(:legislator).permit(:name, :party, :year_elected)
+      params.require(:legislator).permit(:first_name, :last_name, :party, :year_elected)
     end
 end
