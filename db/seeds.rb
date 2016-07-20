@@ -48,6 +48,20 @@ while x < 10 do
   x = x.to_i
 end
 
+# x = 0
+# while x < 39 do
+#   x += 1
+#   x = x.to_s
+#
+#   bills = JSON.parse(HTTParty.get("https://congress.api.sunlightfoundation.com/bills?congress=114&bill_type__in=s|hr&history.active=true&page="+x+"&per_page=50&apikey=06b0919993e0438a80c39d53cc99c878").body)["results"]
+#
+#   x = x.to_i
+#
+#   bills.each do |bill|
+#     Bill.create!()
+#   end
+# end
+
 
 # Legislator.destroy_all
 #
