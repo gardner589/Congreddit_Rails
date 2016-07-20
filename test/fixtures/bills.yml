@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  bill_id: MyString
+  bill_type: MyString
+  chamber: MyString
+  committees: 
+  congress: 1
+  history: 
+  introduced: 2016-07-20
+  last_action: 2016-07-20
+  last_vote: 2016-07-20
+  last_version: 
+  official_title: MyString
+  popular_title: MyString
+  short_title: MyString
+  sponsor: 
+  sponsor_bio_id: MyString
+
+two:
+  bill_id: MyString
+  bill_type: MyString
+  chamber: MyString
+  committees: 
+  congress: 1
+  history: 
+  introduced: 2016-07-20
+  last_action: 2016-07-20
+  last_vote: 2016-07-20
+  last_version: 
+  official_title: MyString
+  popular_title: MyString
+  short_title: MyString
+  sponsor: 
+  sponsor_bio_id: MyString

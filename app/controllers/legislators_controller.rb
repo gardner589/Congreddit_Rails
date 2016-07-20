@@ -1,5 +1,8 @@
 class LegislatorsController < ApplicationController
   before_action :set_legislator, only: [:show, :edit, :update, :destroy]
+
+  # attr_reader :first_name
+
   # GET /legislators
   # GET /legislators.json
   def index
@@ -13,7 +16,7 @@ class LegislatorsController < ApplicationController
     @legislator = Legislator.find(params[:id])
     @votes_id = Vote.all.pluck(:voter_ids)
     @votes = @votes_id.each do |vote|
-     @legVotes = JSON.parse(vote)
+      @legVotes = JSON.parse(vote)
     end
     @legVotes = @votes.map do |vote|
       JSON.parse(vote)
@@ -22,6 +25,7 @@ class LegislatorsController < ApplicationController
     # render json: @legislator, status: :ok
    render :json => {:votes => @legVotes, :legislator => @legislator }
   end
+
   # GET /legislators/new
   def new
     @legislator = Legislator.new
