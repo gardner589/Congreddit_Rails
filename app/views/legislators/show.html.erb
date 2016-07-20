@@ -17,16 +17,15 @@
   <thead>
     <tr>
       <th>Votes</th>
+      <th>Bills</th>
     </tr>
   </thead>
   <tbody>
   <% @votes.each do |vote| %>
     <tr>
       <td><%= JSON.parse(vote.voter_ids)[@legislator.bio_id] %></td>
+      <td><%= vote.bill_id %></td>
     </tr><% end %>
-    <tr>
-
-    </tr>
   </tbody>
 </table>
 
