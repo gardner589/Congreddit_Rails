@@ -22,7 +22,6 @@ class LegislatorsController < ApplicationController
     # render json: @legislator, status: :ok
    render :json => {:votes => @legVotes, :legislator => @legislator }
   end
-
   # GET /legislators/new
   def new
     @legislator = Legislator.new
