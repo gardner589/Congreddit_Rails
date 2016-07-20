@@ -13,7 +13,7 @@ class LegislatorsController < ApplicationController
     @legislator = Legislator.find(params[:id])
     @votes_id = Vote.all.pluck(:voter_ids)
     @votes = @votes_id.each do |vote|
-     @legVotes = JSON.parse(vote)
+      @legVotes = JSON.parse(vote)
     end
     @legVotes = @votes.map do |vote|
       JSON.parse(vote)
