@@ -1,8 +1,14 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <% @billcomments.each do |comment| %>
+    <%= comment.content %>
+  <% end %>
+</p>
+
+<p>
   <strong>Bill:</strong>
-  <%= @bill.bill_id %>
+  <%= @bill.bill_id_from_api %>
 </p>
 
 <p>
@@ -13,11 +19,6 @@
 <p>
   <strong>Chamber:</strong>
   <%= @bill.chamber %>
-</p>
-
-<p>
-  <strong>Committees:</strong>
-  <%= @bill.committees %>
 </p>
 
 <p>
@@ -77,3 +78,5 @@
 
 <%= link_to 'Edit', edit_bill_path(@bill) %> |
 <%= link_to 'Back', bills_path %>
+
+<% console %>

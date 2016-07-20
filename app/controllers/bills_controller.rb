@@ -10,6 +10,7 @@ class BillsController < ApplicationController
   # GET /bills/1
   # GET /bills/1.json
   def show
+    @billcomments = BillComment.find(params[:id])
   end
 
   # GET /bills/new

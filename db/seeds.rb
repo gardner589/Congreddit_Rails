@@ -70,6 +70,7 @@ end
 
 bill_comments = BillComment.create!([
   {author: "Dave", content: "Whatever about this bill", bill_id: 1},
+  {author: "Nelson", content: "I'm a comment content", bill_id: 1},
   {author: "Chris", content: "Great bill! Love the bill! Ducks are so great.", bill_id: 2},
   {author: "Strawberry", content: "I fully endorse any bill involving strawberries", bill_id: 2}
   ])
