@@ -14,16 +14,19 @@ class LegislatorsController < ApplicationController
   # GET /legislators/1.json
   def show
     @legislator = Legislator.find(params[:id])
-    @votes_id = Vote.all.pluck(:voter_ids)
+    @votes_id = Vote.all.pluck(:voter_ids, :bill_id)
+    @bills = Vote.all.pluck(:bill_id)
     @votes = @votes_id.each do |vote|
       @legVotes = JSON.parse(vote)
     end
     @legVotes = @votes.map do |vote|
       JSON.parse(vote)
     end
+    @bill = Bill.all.pluck(:short_title)
+
     # render json: @legislator.to_json, status: :ok
     # render json: @legislator, status: :ok
-   render :json => {:votes => @legVotes, :legislator => @legislator }
+   render :json => {:votes => @legVotes, :legislator => @legislator, :bills => @bills, :bill => @bill }
   end
 
   # GET /legislators/new
