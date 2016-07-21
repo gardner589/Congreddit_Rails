@@ -24,7 +24,7 @@ LegislatorComment.destroy_all
 Bill.destroy_all
 BillComment.destroy_all
 Vote.destroy_all
-
+# 
 x = 0
 
 while x < 12 do
