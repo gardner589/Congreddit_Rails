@@ -1,3 +1,4 @@
+
 class LegislatorCommentsController < ApplicationController
   before_action :set_legislator_comment, only: [:show, :edit, :update, :destroy]
 
@@ -25,20 +26,16 @@ class LegislatorCommentsController < ApplicationController
   # POST /legislator_comments.json
   def create
     @legislator = Legislator.find(params[:legislator_id])
-    @legislator_comment = @legislator.legislator_comments.new(legislator_comment_params)
-
-    # respond_to do |format|
+    @legislator.legislator_comment = LegislatorComment.new(legislator_comment_params)
+    binding.pry
+    respond_to do |format|
       if @legislator_comment.save
-        # format.html { redirect_to @legislator_comment, notice: 'Legislator comment was successfully created.' }
-        # format.json {
-          render json: @legislator_comment.to_json, status: :created
-          # render :show, status: :created, location: @legislator_comment
+        format.html { redirect_to @legislator_comment, notice: 'Legislator comment was successfully created.' }
+        format.json { render :show, status: :created, location: @legislator_comment }
       else
-        binding.pry
-        # format.html { render :new }
-        # format.json {
-        render json: @legislator.to_json, status: :created
-      # end
+        format.html { render :new }
+        format.json { render json: @legislator_comment.errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -75,5 +72,6 @@ class LegislatorCommentsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def legislator_comment_params
       params.require(:legislator_comment).permit(:author, :content, :legislator_id)
+      binding.pry
     end
-  end
+end
