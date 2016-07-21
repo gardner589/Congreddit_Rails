@@ -24,7 +24,8 @@ while x < 39 do
   bills = JSON.parse(HTTParty.get("https://congress.api.sunlightfoundation.com/bills?congress=114&bill_type__in=s|hr&history.active=true&page="+x+"&per_page=50&apikey=06b0919993e0438a80c39d53cc99c878").body)["results"]
 
   bills.each do |bill|
-    Bill.create!(bill_id_from_api: bill["bill_id"], bill_type: bill["bill_type"], chamber: bill["chamber"], congress: bill["congress"], history: bill["history"].to_json, introduced: bill["introduced_on"], last_action: bill["last_action_at"],last_vote: bill["last_vote_at"], last_version: bill["last_version"].to_json, official_title: bill["official_title"], short_title: bill["short_title"], sponsor: bill["sponsor"].to_json, sponsor_bio_id: bill["sponsor_id"])
+    Bill.create!(bill_id_from_api: bill["bill_id"], bill_type: bill["bill_type"], chamber: bill["chamber"], congress: bill["congress"], history: bill["history"].to_json, introduced: bill["introduced_on"], last_action: bill["last_action_at"],last_vote: bill["last_vote_at"],
+    last_version: bill["last_version"].to_json, official_title: bill["official_title"], short_title: bill["short_title"], sponsor: bill["sponsor"].to_json, sponsor_bio_id: bill["sponsor_id"])
 
   end
   x = x.to_i
