@@ -1,21 +1,3 @@
-require 'pry'
-
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-# ```
-# #API Key
-#  # * 06b0919993e0438a80c39d53cc99c878
-#  # * operator ex. /legislators?apikey=
-#  # * https://congress.api.sunlightfoundation.com/legislators?apikey=06b0919993e0438a80c39d53cc99c878
-#
-#  https://congress.api.sunlightfoundation.com/votes?voter_ids.C001105__exists=true&apikey=06b0919993e0438a80c39d53cc99c878
-# ```
-
 require 'httparty'
 require 'json'
 
@@ -64,7 +46,7 @@ while x < 39 do
 
   bills.each do |bill|
     Bill.create!(bill_id_from_api: bill["bill_id"], bill_type: bill["bill_type"], chamber: bill["chamber"], congress: bill["congress"], history: bill["history"].to_json, introduced: bill["introduced_on"], last_action: bill["last_action_at"],last_vote: bill["last_vote_at"],
-    last_version: bill["last_version"].to_json, official_title: bill["official_title"], popular_title: bill["popular_title"], short_title: bill["short_title"], sponsor: bill["sponsor"].to_json, sponsor_bio_id: bill["sponsor_id"])
+    last_version: bill["last_version"].to_json, official_title: bill["official_title"], short_title: bill["short_title"], sponsor: bill["sponsor"].to_json, sponsor_bio_id: bill["sponsor_id"])
   end
 end
 
