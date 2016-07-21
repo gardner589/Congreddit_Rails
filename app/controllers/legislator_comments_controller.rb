@@ -70,7 +70,7 @@ class LegislatorCommentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def legislator_comment_params
-      params.require(:legislator_comment).permit(:author, :content, :legislator_id)
       binding.pry
+      params.require(:legislator_comment).permit(:author, :content, :legislator_id)
     end
   end
