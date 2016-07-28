@@ -14,6 +14,7 @@ class LegislatorsController < ApplicationController
   # GET /legislators/1.json
   def show
     @legislator = Legislator.find(params[:id])
+    # AM: Pluck 4 lyf.
     @votes_id = Vote.all.pluck(:voter_ids)
     @bill = Bill.all.pluck(:short_title, :bill_id_from_api)
     @votes = @votes_id.each do |vote|

@@ -8,6 +8,8 @@ while x < 12 do
   x = x+1
   x = x.to_s
 
+  # AM: A good next step would be to make it so that your seed file doesn't trigger an API call. You may need to do this multiple times in a day (or less!).
+  # AM: Something you could consider is creating a separate Ruby script that populates a data file (e.g., .json) every day/week/whatever. You can then have your seed file pull from that data file.
   legislators = JSON.parse(HTTParty.get("https://congress.api.sunlightfoundation.com/legislators?per_page=50&page="+x+"&apikey=06b0919993e0438a80c39d53cc99c878").body)["results"]
 
   legislators.each do |legislator|

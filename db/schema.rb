@@ -37,12 +37,18 @@ ActiveRecord::Schema.define(version: 20160720140606) do
     t.string   "official_title"
     t.string   "popular_title"
     t.string   "short_title"
+    # AM: This is a down-the-road sort of thing, but there are lots of opportunities for many-to-many relationships in this application.
+    # AM: It seems to me that sponsorships could be a join table between bills and legislators. It's a very specific way in which many legislators could be tied to many bills, and vice-versa.
+    # AM: Implementing that would help clean up your bills schema (and probably other ones).
     t.json     "sponsor"
     t.string   "sponsor_bio_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
   end
 
+  # AM: Noticing your bill and legislator_comment table are pretty much the save, with the exception of your foreign key.
+  # AM: One way to refactor your database is to have a single comments table, with no foreign key on it. This model would have a many-to-many relationship with both bill and legislator_comments.
+  # AM: That means you would have two join tables. Each of those would be responsible for matching a comment_id with a bill_id or legislator_id.
   create_table "legislator_comments", force: :cascade do |t|
     t.string   "author"
     t.text     "content"

@@ -1,4 +1,5 @@
 class LegislatorCommentsController < ApplicationController
+  # AM: Nice!
   before_action :set_legislator_comment, only: [:show, :edit, :update, :destroy]
 
   # GET /legislator_comments
