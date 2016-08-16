@@ -4,8 +4,9 @@ class VotesController < ApplicationController
   # GET /votes
   # GET /votes.json
   def index
-    @legislator = Legislator.find(params[:legislator_id])
-    @votes_id = Vote.all.pluck(:voter_ids, :bill_id)
+    @votes = Vote.all
+    # @legislator = Legislator.find(params[:legislator_id])
+    # @votes_id = Vote.all.pluck(:voter_ids, :bill_id)
     # @votes = @votes_id.each do |vote|
     #  @legVotes = JSON.parse(vote)
     # end
@@ -17,7 +18,6 @@ class VotesController < ApplicationController
   def show
     @legislator = Legislator.find(params[:legislator_id])
     @vote = Vote.find(params[:id])
-    # render json: @vote.to_json, status: :ok
   end
 
   # GET /votes/new

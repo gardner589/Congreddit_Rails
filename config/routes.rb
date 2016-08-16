@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+root 'legislators#index'
   resources :legislators do
     resources :votes
     resources :legislator_comments
@@ -9,10 +9,10 @@ Rails.application.routes.draw do
     resources :bill_comments
   end
 
-  resources :legislators do
-  end
+  # resources :legislators do
+  # end
 
-  # resources :votes
+  resources :votes
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

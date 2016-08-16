@@ -14,13 +14,10 @@ class LegislatorsController < ApplicationController
   # GET /legislators/1.json
   def show
     @legislator = Legislator.find(params[:id])
-    @votes_id = Vote.all.pluck(:voter_ids)
+    @votes_id = Vote.all.pluck(:voter_ids, :bill_id)
     @bill = Bill.all.pluck(:short_title, :bill_id_from_api)
     @votes = @votes_id.each do |vote|
-      @legVotes = JSON.parse(vote)
-    end
-    @legVotes = @votes.map do |vote|
-      JSON.parse(vote)[@legislator.bio_id]
+       @legVotes = JSON.parse(vote[0])
     end
 
     @legcomments = LegislatorComment.where(legislator_id: @legislator.id)
@@ -28,10 +25,7 @@ class LegislatorsController < ApplicationController
        comment
      end
 
-    # render json: @legislator.to_json, status: :ok
-    # render json: @legislator, status: :ok
-    # ,
-   render :json => { :legislator => @legislator, :votes => @legVotes, :bill => @bill, :comments => @comments }
+   render :json => { :legislator => @legislator, :votes => @votes_id, :bill => @bill, :comments => @comments }
   end
 
   # GET /legislators/new
