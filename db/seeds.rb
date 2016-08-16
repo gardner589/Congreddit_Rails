@@ -1,6 +1,9 @@
 require 'pry'
 require 'httparty'
 require 'json'
+Legislator.destroy_all
+Bill.destroy_all
+Vote.destroy_all
 
 
 x = 0
