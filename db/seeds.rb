@@ -48,16 +48,16 @@ while x < 10 do
   x = x.to_i
 end
 
-bill_comments = BillComment.create!([
-  {author: "Dave", content: "Whatever about this bill", bill_id: 1},
-  {author: "Nelson", content: "I'm a comment content", bill_id: 1},
-  {author: "Chris", content: "Great bill! Love the bill! Ducks are so great.", bill_id: 2},
-  {author: "Strawberry", content: "I fully endorse any bill involving strawberries", bill_id: 2}
-  ])
-
-legis_comments = LegislatorComment.create!([
-  {author: "Jerry", content: "Legislator rhymes with Alligator", legislator_id: 1},
-  {author: "Kramer", content: "Yeah Yeah Yeah Yeah Yeah Yeah Legislator", legislator_id: 1},
-  {author: "Elaine", content: "I'll legislate you", legislator_id: 1},
-  {author: "George", content: "Checkout this legislator Jerry!", legislator_id: 2}
-  ])
+# bill_comments = BillComment.create!([
+#   {author: "Dave", content: "Whatever about this bill", bill_id: 1},
+#   {author: "Nelson", content: "I'm a comment content", bill_id: 1},
+#   {author: "Chris", content: "Great bill! Love the bill! Ducks are so great.", bill_id: 2},
+#   {author: "Strawberry", content: "I fully endorse any bill involving strawberries", bill_id: 2}
+#   ])
+#
+# legis_comments = LegislatorComment.create!([
+#   {author: "Jerry", content: "Legislator rhymes with Alligator", legislator_id: 1},
+#   {author: "Kramer", content: "Yeah Yeah Yeah Yeah Yeah Yeah Legislator", legislator_id: 1},
+#   {author: "Elaine", content: "I'll legislate you", legislator_id: 1},
+#   {author: "George", content: "Checkout this legislator Jerry!", legislator_id: 2}
+#   ])
