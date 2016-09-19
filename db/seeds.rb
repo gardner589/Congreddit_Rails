@@ -14,7 +14,7 @@ while x < 12 do
   legislators = JSON.parse(HTTParty.get("https://congress.api.sunlightfoundation.com/legislators?per_page=50&page="+x+"&apikey=06b0919993e0438a80c39d53cc99c878").body)["results"]
 
   legislators.each do |legislator|
-    Legislator.create!(first_name: legislator["first_name"], last_name: legislator["last_name"], party: legislator["party"], year_elected: legislator["term_start"], bio_id: legislator["bioguide_id"], chamber: legislator["chamber"], number: x)
+    Legislator.create!(first_name: legislator["first_name"], last_name: legislator["last_name"], party: legislator["party"], year_elected: legislator["term_start"], bio_id: legislator["bioguide_id"], chamber: legislator["chamber"], state: legislator["state_name"], district: legislator["district"], number: x)
   end
   x = x.to_i
 end
@@ -47,6 +47,8 @@ while x < 10 do
 
   x = x.to_i
 end
+
+# https://congress.api.sunlightfoundation.com/legislators?per_page=50&page=2&apikey=06b0919993e0438a80c39d53cc99c878
 
 # bill_comments = BillComment.create!([
 #   {author: "Dave", content: "Whatever about this bill", bill_id: 1},
