@@ -11,7 +11,8 @@ class BillsController < ApplicationController
   # GET /bills/1
   # GET /bills/1.json
   def show
-    @billcomments = BillComment.where(bill_id: @bill.id)
+    @bill = Bill.find(params[:id])
+    render json: @bill.to_json, status: :ok
   end
 
   # GET /bills/new
