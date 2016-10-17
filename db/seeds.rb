@@ -11,7 +11,7 @@ while x < 12 do
   x = x+1
   x = x.to_s
 
-  legislators = JSON.parse(HTTParty.get("https://congress.api.sunlightfoundation.com/legislators?per_page=50&page="+x+"&apikey=06b0919993e0438a80c39d53cc99c878").body)["results"]
+  legislators = JSON.parse(HTTParty.get("https://congress.api.sunlightfoundation.com/legislators?per_page=50&page="+x+SUNLIGHT_API_KEY).body)["results"]
 
   legislators.each do |legislator|
     Legislator.create!(first_name: legislator["first_name"], last_name: legislator["last_name"], party: legislator["party"], year_elected: legislator["term_start"], bio_id: legislator["bioguide_id"], chamber: legislator["chamber"], state: legislator["state_name"], district: legislator["district"], number: x)
@@ -24,7 +24,7 @@ while x < 39 do
   x += 1
   x = x.to_s
 
-  bills = JSON.parse(HTTParty.get("https://congress.api.sunlightfoundation.com/bills?congress=114&bill_type__in=s|hr&history.active=true&page="+x+"&per_page=50&apikey=06b0919993e0438a80c39d53cc99c878").body)["results"]
+  bills = JSON.parse(HTTParty.get("https://congress.api.sunlightfoundation.com/bills?congress=114&bill_type__in=s|hr&history.active=true&page="+x+SUNLIGHT_API_KEY).body)["results"]
 
   bills.each do |bill|
     Bill.create!(bill_id_from_api: bill["bill_id"], bill_type: bill["bill_type"], chamber: bill["chamber"], congress: bill["congress"], history: bill["history"].to_json, introduced: bill["introduced_on"], last_action: bill["last_action_at"],last_vote: bill["last_vote_at"],
@@ -39,7 +39,7 @@ while x < 10 do
   x += 1
   x = x.to_s
 
-  votes = JSON.parse(HTTParty.get("https://congress.api.sunlightfoundation.com/votes?vote_type=passage&congress=114&fields=voter_ids,bill_id,roll_id,chamber,congress,vote_type,voted_at,year&per_page=50&page="+x+"&apikey=06b0919993e0438a80c39d53cc99c878").body)["results"]
+  votes = JSON.parse(HTTParty.get("https://congress.api.sunlightfoundation.com/votes?vote_type=passage&congress=114&fields=voter_ids,bill_id,roll_id,chamber,congress,vote_type,voted_at,year&per_page=50&page="+x+SUNLIGHT_API_KEY).body)["results"]
 
   votes.each do |vote|
     Vote.create!(bill_id: vote["bill_id"], chamber: vote["chamber"], roll_id: vote["roll_id"], result: vote["result"], vote_type: vote["vote_type"], congress: vote["congress"], voted_at: vote["voted_at"], year: vote["year"], voter_ids: vote["voter_ids"].to_json)
@@ -48,7 +48,7 @@ while x < 10 do
   x = x.to_i
 end
 
-# https://congress.api.sunlightfoundation.com/legislators?per_page=50&page=2&apikey=06b0919993e0438a80c39d53cc99c878
+
 
 # bill_comments = BillComment.create!([
 #   {author: "Dave", content: "Whatever about this bill", bill_id: 1},
