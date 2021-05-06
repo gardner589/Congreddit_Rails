@@ -7,7 +7,7 @@ gem 'figaro'
 gem 'rack-cors'
 gem 'httparty'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.4'
+gem 'rails', '~> 5.2.6'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.2'
 # Use Puma as the app server
